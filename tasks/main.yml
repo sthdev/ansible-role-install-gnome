@@ -1,0 +1,14 @@
+---
+- name: Install GNOME Desktop Environment
+  package:
+    name: "@^gnome-desktop-environment"
+  become: true
+
+- name: Check if GNOME is Default Environment
+  command: systemctl get-default
+  register: systemctl
+
+- name: Make GNOME Default Environment
+  command: systemctl set-default graphical
+  become: true
+  when: systemctl.stdout != "graphical.target"
