@@ -12,3 +12,4 @@
   command: systemctl set-default graphical
   become: true
   when: systemctl.stdout != "graphical.target"
+  notify: reboot

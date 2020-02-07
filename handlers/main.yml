@@ -1,0 +1,7 @@
+---
+- name: reboot
+  # Cannot use the "reboot:" command here. It was introduced with Ansible 2.7.
+  # When installing on a fresh CentOS 7, only Ansible 2.4 is available, which
+  # does not recognize "reboot:" as a command.
+  command: reboot now
+  become: true
