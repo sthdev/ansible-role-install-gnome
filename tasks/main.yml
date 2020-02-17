@@ -7,9 +7,9 @@
 - name: Check if GNOME is Default Environment
   command: systemctl get-default
   register: systemctl
+  changed_when: false
 
 - name: Make GNOME Default Environment
   command: systemctl set-default graphical
   become: true
   when: systemctl.stdout != "graphical.target"
-  notify: reboot
